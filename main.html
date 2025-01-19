@@ -7,15 +7,84 @@
   <title>Project Management Platform</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Hero Section Styling */
+    .hero {
+      background-image: url('./bg.jpg'); /* Replace with your image URL */
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      width: 190vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Add a dark overlay for better text contrast */
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      padding: 15px 30px;
+      font-size: 1rem;
+      background-color: #3E63AD;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero .btn:hover {
+      background-color: #45A049;
+    }
+  </style>
 </head>
 <body>
   <!-- Header Section -->
   <header>
     <div class="logo">
-      <h1>ProjectManager</h1>
+      <img src="logo.png" alt="Logo" class="logo" height="130" width="200">
+      <!-- <h1>ProjectManager</h1> -->
     </div>
   </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Wxecute</h1>
+      <h3>Effortlessly manage your tasks, projects, and teams in one place.</h3>
+      <a href="#tasks" class="btn">Get Started</a>
+    </div>
+  </section>
 
   <!-- Main Content -->
   <main>
@@ -23,34 +92,32 @@
     <section id="tasks" class="section">
       <h2>Task Management</h2>
       <p>Effortlessly create, assign, and track tasks across all your projects.</p>
-      <a href="#" class="btn">Learn More</a>
+      <a href="task.html" class="btn">Go!</a>
     </section>
 
     <!-- Project Management Section -->
     <section id="projects" class="section">
       <h2>Project Management</h2>
       <p>Manage project timelines, monitor progress, and keep notes organized.</p>
-      <a href="#" class="btn">Learn More</a>
+      <a href="project.html" class="btn">Go!</a>
     </section>
 
     <!-- Team Management Section -->
     <section id="teams" class="section">
       <h2>Team Management</h2>
       <p>Collaborate efficiently by managing team roles, responsibilities, and communication.</p>
-      <a href="#" class="btn">Learn More</a>
+      <a href="team.html" class="btn">Go!</a>
     </section>
   </main>
 
   <!-- Footer Section -->
   <footer>
-    <p>&copy; 2025 ProjectManager. All rights reserved.</p>
+    <p>&copy; 2025 Wxecute. All rights reserved.</p>
     <ul class="social-links">
-      <li><a href="#">LinkedIn</a></li>
+      <li><a href="www.linkedin.com/in/kauntiakash2">LinkedIn</a></li>
       <li><a href="#">Twitter</a></li>
-      <li><a href="#">GitHub</a></li>
+      <li><a href="https://github.com/kauntiaakash2">GitHub</a></li>
     </ul>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>

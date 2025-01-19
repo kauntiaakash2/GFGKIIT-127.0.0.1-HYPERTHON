@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Management</title>
+  <link rel="stylesheet" href="team.css">
+</head>
+<body>
+
+  <header>
+    <h1>Team Management</h1>
+    <p>Manage your team members and their tasks</p>
+  </header>
+
+  <main>
+    <!-- Team Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Group Leader</th>
+          <th>Team Members</th>
+          <th>Task Assigned</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="teamTableBody">
+        <tr>
+          <td><input type="text" value="John Doe" class="group-leader"></td>
+          <td><textarea class="team-members">Alice, Bob, Charlie</textarea></td>
+          <td><textarea class="task-assigned">Develop Backend</textarea></td>
+          <td>
+            <button class="save-btn">Save</button>
+            <button class="delete-btn">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Add Team Button -->
+    <div class="add-team-container">
+      <button class="add-team-btn">Add Team</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Wxecute. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Add Team Button Functionality
+    document.querySelector('.add-team-btn').addEventListener('click', () => {
+      const newTeamRow = `
+        <tr>
+          <td><input type="text" value="New Leader" class="group-leader"></td>
+          <td><textarea class="team-members">Add team members...</textarea></td>
+          <td><textarea class="task-assigned">Assign tasks...</textarea></td>
+          <td>
+            <button class="save-btn">Save</button>
+            <button class="delete-btn">Delete</button>
+          </td>
+        </tr>`;
+      document.getElementById('teamTableBody').insertAdjacentHTML('beforeend', newTeamRow);
+      alert('Team Added!');
+    });
+
+    // Team Actions: Save, Update, Delete
+    document.querySelector('#teamTableBody').addEventListener('click', (e) => {
+      if (e.target.classList.contains('delete-btn')) {
+        e.target.parentElement.parentElement.remove();
+        alert('Team Deleted Successfully!');
+      } else if (e.target.classList.contains('save-btn')) {
+        const row = e.target.closest('tr');
+        const groupLeader = row.querySelector('.group-leader').value;
+        const teamMembers = row.querySelector('.team-members').value;
+        const taskAssigned = row.querySelector('.task-assigned').value;
+
+        // Replace Save with Update button
+        const saveButton = row.querySelector('.save-btn');
+        saveButton.textContent = 'Update';
+        saveButton.classList.add('update-btn');
+        saveButton.classList.remove('save-btn');
+
+        // Disable inputs after saving
+        row.querySelector('.group-leader').disabled = true;
+        row.querySelector('.team-members').disabled = true;
+        row.querySelector('.task-assigned').disabled = true;
+
+        alert(`Team Saved: Leader - ${groupLeader}, Members - ${teamMembers}, Task - ${taskAssigned}`);
+      } else if (e.target.classList.contains('update-btn')) {
+        const row = e.target.closest('tr');
+
+        // Re-enable inputs for editing
+        row.querySelector('.group-leader').disabled = false;
+        row.querySelector('.team-members').disabled = false;
+        row.querySelector('.task-assigned').disabled = false;
+
+        // Switch Update button back to Save
+        e.target.textContent = 'Save';
+        e.target.classList.add('save-btn');
+        e.target.classList.remove('update-btn');
+
+        alert('You can now edit the team details.');
+      }
+    });
+  </script>
+
+</body>
+</html>

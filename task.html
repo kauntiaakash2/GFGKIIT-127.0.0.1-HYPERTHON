@@ -13,11 +13,6 @@
   </header>
 
   <main>
-    <!-- Add Task Button -->
-    <div class="add-task-container">
-      <button class="add-task-btn">Add Task</button>
-    </div>
-
     <!-- Task Table -->
     <table>
       <thead>
@@ -30,20 +25,31 @@
       </thead>
       <tbody id="taskTableBody">
         <tr>
-          <td>Complete Project Report</td>
-          <td>2025-01-25</td>
-          <td>High</td>
+          <td><input type="text" value="Complete Project Report" class="task-name"></td>
+          <td><input type="date" value="2025-01-25" class="task-deadline"></td>
           <td>
-            <button class="update-btn">Update</button>
+            <select class="task-priority">
+              <option value="High" selected>High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </td>
+          <td>
+            <button class="save-btn">Save</button>
             <button class="delete-btn">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Add Task Button (Moved to the bottom) -->
+    <div class="add-task-container">
+      <button class="add-task-btn">Add Task</button>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Task Management. All rights reserved.</p>
+    <p>&copy; 2025 Wxecute. All rights reserved.</p>
   </footer>
 
   <script>
@@ -51,11 +57,17 @@
     document.querySelector('.add-task-btn').addEventListener('click', () => {
       const newTaskRow = `
         <tr>
-          <td>New Task</td>
-          <td>2025-01-31</td>
-          <td>Medium</td>
+          <td><input type="text" value="New Task" class="task-name"></td>
+          <td><input type="date" value="2025-01-31" class="task-deadline"></td>
           <td>
-            <button class="update-btn">Update</button>
+            <select class="task-priority">
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </td>
+          <td>
+            <button class="save-btn">Save</button>
             <button class="delete-btn">Delete</button>
           </td>
         </tr>`;
@@ -63,15 +75,71 @@
       alert('Task Added!');
     });
 
-    // Task Actions: Delete or Update
+    // Task Actions: Delete, Save (as Update)
     document.querySelector('#taskTableBody').addEventListener('click', (e) => {
       if (e.target.classList.contains('delete-btn')) {
         e.target.parentElement.parentElement.remove();
         alert('Task Deleted Successfully!');
+      } else if (e.target.classList.contains('save-btn')) {
+        const row = e.target.closest('tr');
+        const taskName = row.querySelector('.task-name').value;
+        const taskDeadline = row.querySelector('.task-deadline').value;
+        const taskPriority = row.querySelector('.task-priority').value;
+
+        // Replace Save with Update button
+        const saveButton = row.querySelector('.save-btn');
+        saveButton.textContent = 'Update';
+        saveButton.classList.add('update-btn');
+        saveButton.classList.remove('save-btn');
+
+        // Display the selected priority with color after saving
+        const priorityDisplay = row.querySelector('.task-priority');
+        row.querySelector('.task-priority').style.display = 'none'; // Hide dropdown
+        const priorityColor = getPriorityColor(taskPriority);
+        const priorityText = `<span class="priority-text" style="color: ${priorityColor};">${taskPriority}</span>`;
+        row.querySelector('.task-priority').insertAdjacentHTML('afterend', priorityText);
+
+        // Optionally, disable inputs after saving or update
+        row.querySelector('.task-name').disabled = true;
+        row.querySelector('.task-deadline').disabled = true;
+
+        alert(`Task Updated: ${taskName}, Deadline: ${taskDeadline}, Priority: ${taskPriority}`);
       } else if (e.target.classList.contains('update-btn')) {
-        alert('Task Update Modal Coming Soon!');
+        const row = e.target.closest('tr');
+        const taskName = row.querySelector('.task-name').value;
+        const taskDeadline = row.querySelector('.task-deadline').value;
+        const taskPriority = row.querySelector('.task-priority').value;
+
+        // Save changes by switching button back to 'Save'
+        e.target.textContent = 'Save';
+        e.target.classList.add('save-btn');
+        e.target.classList.remove('update-btn');
+
+        // Re-enable inputs to allow further editing
+        row.querySelector('.task-name').disabled = false;
+        row.querySelector('.task-deadline').disabled = false;
+
+        // Remove the displayed priority and show the select dropdown
+        row.querySelector('.priority-text').remove();
+        row.querySelector('.task-priority').style.display = 'inline-block';
+
+        alert(`Changes Saved: ${taskName}, Deadline: ${taskDeadline}, Priority: ${taskPriority}`);
       }
     });
+
+    // Function to return color based on priority
+    function getPriorityColor(priority) {
+      switch(priority) {
+        case 'High':
+          return 'red';
+        case 'Medium':
+          return 'yellow';
+        case 'Low':
+          return 'green';
+        default:
+          return 'black';
+      }
+    }
   </script>
 </body>
 </html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Management</title>
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+  <header>
+    <h1>Project Management</h1>
+    <p>Manage your projects efficiently with all the necessary details</p>
+  </header>
+
+  <main>
+    <!-- Add Project Button -->
+    <div class="add-project-container">
+      <button class="add-project-btn">Add Project</button>
+    </div>
+
+    <!-- Project Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Project Details</th>
+          <th>Problem Statement</th>
+          <th>Deadline</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="projectTableBody">
+        <tr>
+          <td>Website Redesign</td>
+          <td>Redesign the UI for better user experience</td>
+          <td>Improve navigation and reduce bounce rate</td>
+          <td>2025-02-15</td>
+          <td>
+            <button class="update-btn">Update</button>
+            <button class="delete-btn">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Wxecute. All rights reserved.</p>
+  </footer>
+
+  <!-- Update Modal -->
+  <div class="modal" id="updateModal">
+    <div class="modal-content">
+      <h2>Update Project</h2>
+      <label for="projectName">Project Name:</label>
+      <input type="text" id="projectName" />
+      <label for="projectDetails">Project Details:</label>
+      <textarea id="projectDetails"></textarea>
+      <label for="problemStatement">Problem Statement:</label>
+      <textarea id="problemStatement"></textarea>
+      <label for="deadline">Deadline:</label>
+      <input type="date" id="deadline" />
+      <button class="save-btn">Save Changes</button>
+      <button class="close-btn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Add Project Button Functionality
+    document.querySelector('.add-project-btn').addEventListener('click', () => {
+      const newProjectRow = `
+        <tr>
+          <td>New Project</td>
+          <td>Details about the new project</td>
+          <td>Problem statement for the project</td>
+          <td>2025-03-01</td>
+          <td>
+            <button class="update-btn">Update</button>
+            <button class="delete-btn">Delete</button>
+          </td>
+        </tr>`;
+      document.getElementById('projectTableBody').insertAdjacentHTML('beforeend', newProjectRow);
+      alert('New Project Added!');
+    });
+
+    // Project Actions: Delete or Update
+    const projectTableBody = document.querySelector('#projectTableBody');
+    let currentRow;
+
+    projectTableBody.addEventListener('click', (e) => {
+      if (e.target.classList.contains('delete-btn')) {
+        e.target.parentElement.parentElement.remove();
+        alert('Project Deleted Successfully!');
+      } else if (e.target.classList.contains('update-btn')) {
+        // Open Update Modal
+        const row = e.target.parentElement.parentElement;
+        currentRow = row;
+        document.getElementById('projectName').value = row.cells[0].innerText;
+        document.getElementById('projectDetails').value = row.cells[1].innerText;
+        document.getElementById('problemStatement').value = row.cells[2].innerText;
+        document.getElementById('deadline').value = row.cells[3].innerText;
+        document.getElementById('updateModal').style.display = 'block';
+      }
+    });
+
+    // Save Changes in Modal
+    document.querySelector('.save-btn').addEventListener('click', () => {
+      const projectName = document.getElementById('projectName').value;
+      const projectDetails = document.getElementById('projectDetails').value;
+      const problemStatement = document.getElementById('problemStatement').value;
+      const deadline = document.getElementById('deadline').value;
+
+      currentRow.cells[0].innerText = projectName;
+      currentRow.cells[1].innerText = projectDetails;
+      currentRow.cells[2].innerText = problemStatement;
+      currentRow.cells[3].innerText = deadline;
+
+      document.getElementById('updateModal').style.display = 'none';
+      alert('Project Updated Successfully!');
+    });
+
+    // Close Modal
+    document.querySelector('.close-btn').addEventListener('click', () => {
+      document.getElementById('updateModal').style.display = 'none';
+    });
+  </script>
+</body>
+</html>

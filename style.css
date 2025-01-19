@@ -1,0 +1,164 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f9fafc;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Header Styling */
+  header {
+    background:#1F1F1F;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .logo h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  /* Main Content Styling */
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 40px 20px;
+    gap: 20px;
+  }
+  
+  section {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  section h2 {
+    margin-bottom: 15px;
+    color: #3E63AD;
+  }
+  
+  section p {
+    font-size: 1rem;
+    color: #000000;
+  }
+  
+  /* Buttons Styling */
+  .btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background-color: #3E63AD;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #45A049;
+  }
+  
+  /* Footer Styling */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  footer .social-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  footer .social-links li a {
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  footer .social-links li a:hover {
+    color: white;
+  }
+  
+  /* Hero Section */
+  .hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .hero-content {
+    z-index: 2;
+    max-width: 800px;
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .hero .btn {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .logo h1 {
+      font-size: 2rem;
+    }
+  
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+  
+    .hero p {
+      font-size: 1.2rem;
+    }
+  
+    main {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    section {
+      width: 90%;
+    }
+  }
+  
