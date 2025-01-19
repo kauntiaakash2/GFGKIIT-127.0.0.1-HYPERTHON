@@ -1,0 +1,145 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f9fafc;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+  background: linear-gradient(90deg, #4CAF50, #45A049);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* To position nav-links on the sides */
+}
+
+.nav-links {
+  position: absolute;
+  left: 20px; /* Align nav links to the left */
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #ddd;
+}
+
+.logo h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Main Content Styling */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 40px 20px;
+  gap: 20px;
+}
+
+section {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 30%;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+section h2 {
+  margin-bottom: 15px;
+  color: #4CAF50;
+}
+
+section p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Section Buttons */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #45A049;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+footer .social-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+footer .social-links li a {
+  color: #4CAF50;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer .social-links li a:hover {
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    position: static;
+    margin-top: 10px;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  section {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,113 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+  }
+  
+  header h1 {
+    margin-bottom: 10px;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  thead {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  thead th {
+    padding: 10px;
+    text-transform: uppercase;
+  }
+  
+  tbody td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* Add Task Button */
+  .add-task-container {
+    margin: 20px 0;
+  }
+  
+  .add-task-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+  }
+  
+  .add-task-btn:hover {
+    background-color: #45A049;
+    transform: scale(1.05);
+  }
+  
+  /* Action Buttons (Update & Delete) */
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+  }
+  
+  .update-btn {
+    background-color: #FFA500;
+    color: white;
+  }
+  
+  .update-btn:hover {
+    background-color: #FF8C00;
+    transform: scale(1.05);
+  }
+  
+  .delete-btn {
+    background-color: #FF4444;
+    color: white;
+  }
+  
+  .delete-btn:hover {
+    background-color: #CC0000;
+    transform: scale(1.05);
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
